@@ -4,7 +4,7 @@ set -e
 echo "Hi"
 
 # Get the container ID of the first running container
-containerid=$(docker ps | awk '{print $1}' | head -n 1)
+containerid=$(sudo docker ps | awk '{print $1}' | head -n 1)
 
 # Remove the container if it exists
 if [ -n "$containerid" ]; then
