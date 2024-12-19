@@ -1,5 +1,10 @@
 version: 0.0
 os: linux
+files:
+  - source: scripts/start_container.sh
+    destination: /opt/codedeploy-agent/deployment-root/scripts/
+  - source: scripts/stop_container.sh
+    destination: /opt/codedeploy-agent/deployment-root/scripts/
 hooks:
   ApplicationStop:
     - location: scripts/stop_container.sh
