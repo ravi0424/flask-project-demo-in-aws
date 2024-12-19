@@ -1,23 +1,12 @@
 version: 0.0
 os: linux
-files:
-  - source: /Dockerfile
-    destination: /home/ubuntu/flask-project-demo-in-aws/Dockerfile
-  - source: /app.py
-    destination: /home/ubuntu/flask-project-demo-in-aws/app.py
-  - source: /requirements.txt
-    destination: /home/ubuntu/flask-project-demo-in-aws/requirements.txt
-  - source: /start_container.sh
-    destination: /home/ubuntu/flask-project-demo-in-aws/start_container.sh
-  - source: /stop_container.sh
-    destination: /home/ubuntu/flask-project-demo-in-aws/stop_container.sh
-
 hooks:
+  ApplicationStop:
+    - location: stop_container.sh
+      timeout: 300
+      runas: root
   AfterInstall:
     - location: start_container.sh
-      timeout: 180
+      timeout: 300
       runas: root
-  BeforeInstall:
-    - location: stop_container.sh
-      timeout: 180
-      runas: root
+    
